@@ -25,10 +25,15 @@ export class AppComponent implements OnInit {
     };
   }
   calcFib() {
-    if (this.webWorker == null) {
-      this.setworker();
+    if (this.number) {
+
+      if (this.webWorker == null) {
+        this.setworker();
+      }
+      this.webWorker.postMessage(this.number);
+    } else {
+      alert('Enter valid parameter to calculate')
     }
-    this.webWorker.postMessage(this.number);
   }
 
 }
